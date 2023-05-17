@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_inhercia_ek_contract_work_order_form" model="ir.ui.view">
+        <field name="name">inherit.ek.contract.work.order</field>
+        <field name="model">ek.contract.work.order</field>
+        <field name="inherit_id" ref="ek_isp_subscription.view_ek_contract_work_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='new_service_cut_date']" position="after">
+                <field name="is_oamp" invisible="1"/>
+                <field name="is_olin" invisible="1"/>
+
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|',('is_oamp','=', True),('is_olin','=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|',('is_oamp','=', True),('is_olin','=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='manager_technical_comercial']" position="replace">
+
+                <field name="manager_technical_comercial"
+                       attrs="{'readonly':[('is_update_service_tech','=', False)]}"
+                       widget="boolean_toggle"
+                       groups="ek_isp_subscription.group_admin_isp_comercial,ek_isp_subscription.group_admin_isp_comercial"/>
+            </xpath>
+
+            <!--            revisar bien este dominio-->
+            <field name="subscription_id" position="attributes">
+                <attribute name="attrs">{'required': [('is_oamp','!=', True)],'invisible': [('is_oamp','=', True)]}
+                </attribute>
+            </field>
+
+            <xpath expr="//field[@name='package_id']" position="replace">
+                <label for="package_id" string="Paquete de Servicio Internet"/>
+                <div>
+                    <field name="package_id" class="oe_inline" options="{'no_create':True,'no_open':True}"
+                           attrs="{'readonly':['|',('state','=', 'executed'),('manager_technical_comercial','=', False)]}"
+                           force_save="1"/>
+                    <button name="open_package_id_form" type="object" string="" class="btn-link mb-1 px-0 oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='bandwidth_up_id']" position="replace">
+                <label for="bandwidth_up_id" string="Ancho de banda subida"/>
+                <div>
+                    <field name="bandwidth_up_id" class="oe_inline" options="{'no_create':True,'no_open':True}"
+                           attrs="{'readonly':['|',('state','=', 'executed'),('manager_technical_comercial','=', False)]}"
+                           force_save="1"/>
+                    <button name="open_bandwidth_up_id_form" type="object" string=""
+                            class="btn-link mb-1 px-0 oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='bandwidth_down_id']" position="replace">
+                <label for="bandwidth_down_id" string="Ancho de banda bajada"/>
+                <div>
+                    <field name="bandwidth_down_id" class="oe_inline" options="{'no_create':True,'no_open':True}"
+                           attrs="{'readonly':['|',('state','=', 'executed'),('manager_technical_comercial','=', False)]}"
+                           force_save="1"/>
+                    <button name="open_bandwidth_down_id_form" type="object" string=""
+                            class="btn-link mb-1 px-0 oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='core_id']" position="replace">
+                <label for="core_id" string="Router Core"/>
+                <div>
+                    <field name="core_id" class="oe_inline" options="{'no_create':True,'no_open':True}"
+                           attrs="{'readonly':['|',('manager_technical','=', False),('state','=', 'executed')]}"
+                           force_save="1"/>
+                    <button name="open_core_id_form" type="object" string="" class="oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='box_id']" position="replace">
+                <br/>
+                <label for="box_id" string="Caja NAP"/>
+                <div>
+                    <field name="box_id" class="oe_inline" options="{'no_create':True,'no_open':True}" force_save="1"
+                           attrs="{'invisible': [('ek_link_type', '!=', 'fiber')],'readonly':['|',('manager_technical','=', False),('state','=', 'executed')]}"/>
+                    <button name="open_box_id_form" type="object" string="" class="btn-link mb-1 px-0 oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='olt_id']" position="replace">
+                <label for="olt_id" string="OLT"/>
+                <div>
+                    <field name="olt_id" class="oe_inline" options="{'no_create':True,'no_open':True}"
+                           domain="[('id','in', available_olt_ids)]" force_save="1"
+                           attrs="{'invisible': [('ek_link_type', '!=', 'fiber')],'readonly':['|',('manager_technical','=', False),('state','=', 'executed')]}"/>
+                    <button name="open_olt_id_form" type="object" string="" class="btn-link mb-1 px-0 oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='card_id']" position="replace">
+                <label for="card_id" string="Tarjeta"/>
+                <div>
+                    <field name="card_id" class="oe_inline" options="{'no_create':True,'no_open':True}"
+                           domain="[('olt_id','=', olt_id)]" force_save="1"
+                           attrs="{'invisible': [('ek_link_type', '!=', 'fiber')],'readonly':['|',('manager_technical','=', False),('state','=', 'executed')]}"/>
+                    <button name="open_card_id_form" type="object" string="" class="btn-link mb-1 px-0 oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='port_id']" position="replace">
+                <label for="port_id" string="Puerto"/>
+                <div>
+                    <field name="port_id" class="oe_inline" options="{'no_create':True,'no_open':True}"
+                           domain="[('olt_card_id','=', card_id)]" force_save="1"
+                           attrs="{'invisible': [('ek_link_type', '!=', 'fiber')],'readonly':['|',('manager_technical','=', False),('state','=', 'executed')]}"/>
+                    <button name="open_port_id_form" type="object" string="" class="btn-link mb-1 px-0 oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='vlan_id']" position="replace">
+                <label for="vlan_id" string=""/>
+                <div>
+                    <field name="vlan_id" class="oe_inline" options="{'no_create':True,'no_open':True}"
+                           attrs="{'readonly':['|',('manager_technical','=', False),('state','=', 'executed')]}"
+                    />
+                    <button name="open_vlan_id_form" type="object" string="" class="btn-link mb-1 px-0 oe_inline"
+                            icon="fa-pencil" groups="ek_isp_subscription.group_administrador_isp_admisp"/>
+                </div>
+            </xpath>
+            <field name="materials_ids" position="attributes">
+                <attribute name="context">{'default_type_action':'delivery_customer'}</attribute>
+            </field>
+
+            <field name="ek_link_id" position="attributes">
+                <attribute name="attrs">{'readonly': ['|',('state','=', 'executed'),('manager_technical_comercial','=',
+                    False)]}
+                </attribute>
+            </field>
+            <field name="ek_sharing_level_id" position="attributes">
+                <attribute name="attrs">{'readonly': ['|',('state','=', 'executed'),('manager_technical_comercial','=',
+                    False)]}
+                </attribute>
+            </field>
+
+            <field name="ek_connection_type_id" position="attributes">
+                <attribute name="attrs">{'readonly': ['|',('state','=', 'executed'),('manager_technical_comercial','=',
+                    False)]}
+                </attribute>
+            </field>
+            <field name="is_cut_service" position="attributes">
+                <attribute name="attrs">{'readonly': ['|',('state','=', 'executed'),('manager_technical_comercial','=',
+                    False)]}
+                </attribute>
+            </field>
+            <field name="new_service_cut_date" position="attributes">
+                <attribute name="attrs">{'readonly': ['|',('state','=', 'executed'),('manager_technical_comercial','=',
+                    False)]}
+                </attribute>
+                <attribute name="options">{'no_create':True,'no_open':True}</attribute>
+            </field>
+            <field name="ip_id" position="attributes">
+                <attribute name="options">{'no_create':True,'no_open':True}</attribute>
+            </field>
+
+
+            <xpath expr="//field[@name='materials_ids']/tree[1]/field[@name='location_id']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="technical_isp" model="ir.actions.act_window">
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">action</field>
+        <field name="binding_view_types">list,form</field>
+        <field name="context">{'create': False,'delate': False}</field>
+        <field name="domain">[('technical', '=', uid),('state','!=',['draft','open'])]</field>
+        <field name="filter" eval="False"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="help"><![CDATA[<p class="o_view_nocontent_smiling_face">
+                    Esta es tu nueva acción.
+                </p>
+                <p>Por defecto, contiene una lista y una vista de formulario y posiblemente
+                    otros tipos de vista dependiendo de las opciones que hayas elegido para tu modelo.
+                </p>
+                <p>
+                    Puedes empezar a personalizar estas pantallas haciendo clic en el icono de Studio en la
+                    esquina superior derecha (también puedes personalizar este mensaje de ayuda allí).
+                </p>
+            ]]></field>
+        <field name="limit">80</field>
+        <field name="name">Orden de Trabajo Técnico</field>
+        <field name="res_model">ek.contract.work.order</field>
+        <field name="search_view_id" eval="False"/>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="usage" eval="False"/>
+        <field name="view_id" eval="False"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="isp_ot_technical" model="ir.ui.menu">
+        <field name="action" ref="technical_isp"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [ref('ek_isp_subscription.group_tecnico_isp_tecisp')])]"/>
+        <field name="name">OT Técnico</field>
+        <field name="parent_id" ref="ek_isp_subscription.menu_isp_operations"/>
+        <field name="sequence">2</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+</odoo>

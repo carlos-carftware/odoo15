@@ -1,0 +1,16 @@
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_secundo" model="ir.cron">
+            <field name="name">Proceso de cortes: Ejecutar</field>
+            <field name="model_id" ref="model_ek_subscription_disabled"/>
+<!--            <field name="type">ir.actions.server</field>-->
+            <field name="state">code</field>
+            <field name="code">model.cron_execute_cutting_off_process()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+            <field name="priority" eval="50"/>
+        </record>
+    </data>
+</odoo>

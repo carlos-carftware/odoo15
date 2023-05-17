@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_form_inherit_promesa_payment" model="ir.ui.view">
+        <field name="name">ek.promise.payment.form.view</field>
+        <field name="model">ek.promise.payment</field>
+        <field name="inherit_id" ref="ek_isp_subscription.ek_promise_payment_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='subscription_id']" position="replace">
+                <field name="subscription_id" domain="[('state_service', '=', 'open')]"/>
+            </xpath>
+            <xpath expr="//field[@name='day_add']" position="after">
+                <field name="year_repetition_count" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

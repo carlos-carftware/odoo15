@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="sale_subscription_view_form_inherit" model="ir.ui.view">
+        <field name="name">sale.subscription.form.view</field>
+        <field name="model">sale.subscription</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='recurring_end_date']" position="after">
+                <!--                <button name="cron_generate_cutting_off_process" type="object" string="prueba3" invisible="0"/>-->
+                <field name="phone"/>
+                <field name="mobile"/>
+                <field name="email_from"/>
+                <field name="emergency_contact_name"/>
+                <field name="emergency_contact_number"/>
+                <field name="relationship"/>
+                <button name="cron_generate_cutting_off_process" string="prueba cron" invisible="1" type="object"/>
+            </xpath>
+            <xpath expr="//field[@name='referred_by']" position="before">
+                <field name="type_subscription"/>
+            </xpath>
+            <xpath expr="//field[@name='template_id']" position="after">
+                <field name="lead_type"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_form_inherit_promesa" model="ir.ui.view">
+        <field name="name">sale.order.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="ek_sales_subscription.view_order_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@id='contract_sales']" position="after">
+                <page string="Promesa de Pago">
+                    <group>
+                        <field name="promise_payment_line_ids" attrs="{'readonly': [('state','=','done')]}"
+                               options="{'no_create':True,'no_open':True}"/>
+                    </group>
+
+                </page>
+            </xpath>
+            <field name="phone" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="mobile" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="email_from" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="emergency_contact_name" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="emergency_contact_number" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="relationship" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="is_old_man" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="is_disabled_person" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="percent_discapacity" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="referred_by" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="res_bank_sub" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="payment_installation" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="advance_payment" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="considered_arcotel" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="considered_reporting_samples" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="comercial_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="lead_type" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="subscription_period_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="service_activation_date" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="proposed_activation_date" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+
+            <field name="country_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="street" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="street2" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="state_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="city_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="zip" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="canton_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="zone_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="region_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="sector_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="latitude" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="longitude" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="number_person" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="cnel_code" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="housing_type_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="floor" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="department" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="ek_subscription_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+        </field>
+    </record>
+    <record id="view_order_form_inherit_promesa1" model="ir.ui.view">
+        <field name="name">sale.order.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="ek_isp_subscription.view_order_form_inherit_isp_subscription"/>
+        <field name="arch" type="xml">
+            <field name="ek_link_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="ek_sharing_level_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="ek_connection_type_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="bandwidth_up_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="widget">selection</attribute>
+            </field>
+            <field name="bandwidth_down_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="widget">selection</attribute>
+            </field>
+            <field name="is_cut_service" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="service_cut_date" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="package_stream_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="package_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="widget">selection</attribute>
+            </field>
+        </field>
+    </record>
+    <record id="view_order_form_inherit_promesa2" model="ir.ui.view">
+        <field name="name">sale.order.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='skip_payment']" position="before">
+                <field name="subscription_updated" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='referred_by']" position="before">
+                <field name="type_subscription"/>
+            </xpath>
+            <field name="ek_subscription_id" position="attributes">
+                <attribute name="widget">selection</attribute>
+                <attribute name="attrs">{'readonly': [('subscription_updated', '=', True)]}</attribute>
+            </field>
+
+            <field name="user_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="widget">selection</attribute>
+
+            </field>
+            <field name="team_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="widget">selection</attribute>
+
+            </field>
+            <field name="company_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+
+            </field>
+            <field name="client_order_ref" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="fiscal_position_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="analytic_account_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="invoice_status" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="origin" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="campaign_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="medium_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="source_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="type_id" position="attributes">
+                <!--                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>-->
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="promotion_templ_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="payment_term_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+            <field name="order_line" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="account_payment_ids" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="skip_payment" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+            </field>
+
+
+            <xpath expr="//field[@name='order_line']/tree[1]/field[@name='product_id']" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </xpath>
+            <field name="city_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="canton_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="zone_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="region_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+
+            <field name="sector_id" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="res_bank_sub" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+            <field name="referred_by" position="attributes">
+                <attribute name="attrs">{'readonly': [('state','=','done')]}</attribute>
+                <attribute name="options">{"no_open":true}</attribute>
+            </field>
+
+
+        </field>
+    </record>
+    <record id="view_order_tree_inherit_isp_subscription_sale" model="ir.ui.view">
+        <field name="name">sale.order.tree.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_subscription.sale_order_view_tree_subscription"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='date_order']" position="before">
+                <field name="validity_date"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_total']" position="before">
+                <field name="amount_residual"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
